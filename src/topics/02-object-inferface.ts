@@ -18,6 +18,6 @@ const Yin: Character = {
 
 }
 
-console.table(Yin)
+console.table(Yin);
 
 export{};
