@@ -26,7 +26,7 @@ const {song: anotherSong, songDuration: duration, audioVolume: volume  } = audio
 
 const {author, year} = audioPlayer.details
 
-//console.log('song:', anotherSong, duration, volume, author, year);
+console.log('song:', anotherSong, duration, volume, author, year);
 
 // sin destricturing    const dbz: string[] = ['Goku','Vegeta','Trunks'];
 
