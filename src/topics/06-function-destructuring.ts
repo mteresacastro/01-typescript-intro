@@ -20,29 +20,46 @@ interface TaxCalculationOptions{
     products: Product[];
 }
 
-function taxCalculation( options: TaxCalculationOptions ): number[]{
+//function taxCalculation( options: TaxCalculationOptions): number[]{ // en lugar de numbre[] podemos poner [number, number]
+//function taxCalculation( {tax, products}: TaxCalculationOptions): number[]{
+function taxCalculation( options: TaxCalculationOptions): number[]{
+
+    const {tax, products} = options
     
     let total = 0;
-
-    options.products.forEach( product => {
-        total += product.price;
+    //sin des
+    // options.products.forEach( product => {
+    //     total += product.price;
+    // });
+    //con des
+    products.forEach( ({price}) => {
+        total += price;
     });
 
-    return [total, total*options.tax];
+    return [total, total*tax];
 }
 
 const shoppingCart = [phone, tablet];
 
-const tax: number = 0.15
+const tax = 0.15
 
-const result = taxCalculation({
+//sin desestructuracion
+// const result = taxCalculation({
+//     products: shoppingCart,
+//     tax: tax, //PODEMOS DEJARLO SOLO EN tax, PORQUE JS SABE QUE NOS ESTAMOS REFIRIENDO A LA VARIABLE CON EL MISMO NOMBRE
+// })
+//
+//console.log('Total:'+ result[0]);
+//console.log('Tax:'+ result[1]);
+//
+//con desestructuracion
+
+const [products, iva] = taxCalculation({
     products: shoppingCart,
     tax: tax, //PODEMOS DEJARLO SOLO EN tax, PORQUE JS SABE QUE NOS ESTAMOS REFIRIENDO A LA VARIABLE CON EL MISMO NOMBRE
 })
 
-console.log('Total:'+ result[0])
-
-console.log('Tax:'+ result[1])
-
+console.log('Total:'+ products);
+console.log('Tax:'+ iva);
 
 export {};
