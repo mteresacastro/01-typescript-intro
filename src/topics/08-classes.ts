@@ -21,18 +21,34 @@ export class Person{
 
 //EXTENDER UNA CLASE
 
-export class Hero extends Person{
+// export class Hero extends Person{
+//     constructor(
+//         public alterEgo: string,
+//         public age: number,
+//         public realName: string,
+
+//     ){
+//         super(realName, 'New York');
+//     }
+// };
+
+//debemos priorizar composición frente a herencia (no usar super), asi si hacemos cambios en una clase no modificará a las demás.
+
+class Hero {
     constructor(
         public alterEgo: string,
         public age: number,
         public realName: string,
+        public person: Person,
 
     ){
-        super(realName, 'New York');
+        
     }
-}
+};
 
-const ironMan = new Hero("IronMan", 45, "Tony");
+
+const tony = new Person("Tony Stark", "New York")
+const ironMan = new Hero("IronMan", 45, "Tony", tony);
 
 
 console.log(ironMan);
